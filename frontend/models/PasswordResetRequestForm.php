@@ -1,5 +1,5 @@
 <?php
-namespace backend\models;
+namespace frontend\models;
 
 use common\models\User;
 use yii\base\Model;
@@ -18,12 +18,12 @@ class PasswordResetRequestForm extends Model
     {
         return [
             ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
+            ['email', 'required', 'message' => 'Введите Ваш Email'],
             ['email', 'email'],
             ['email', 'exist',
                 'targetClass' => '\common\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
-                'message' => 'Пользователя с таким E-mail не существует'
+                'message' => 'There is no user with such email.'
             ],
         ];
     }
@@ -50,7 +50,7 @@ class PasswordResetRequestForm extends Model
                 return \Yii::$app->mailer->compose(['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'], ['user' => $user])
                     ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
                     ->setTo($this->email)
-                    ->setSubject('Пароль восстановления для  ' . \Yii::$app->name)
+                    ->setSubject('Password reset for ' . \Yii::$app->name)
                     ->send();
             }
         }

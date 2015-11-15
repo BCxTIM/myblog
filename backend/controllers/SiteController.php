@@ -7,6 +7,8 @@ use yii\web\Controller;
 use common\models\LoginForm;
 use backend\models\SignupForm;
 use yii\filters\VerbFilter;
+use frontend\models\PasswordResetRequestForm;
+use frontend\models\ResetPasswordForm;
 
 /**
  * Site controller
@@ -119,11 +121,11 @@ class SiteController extends Controller
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', 'Данные для восстановления отправлены на Ваш E-mail');
 
                 return $this->goHome();
             } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
+                Yii::$app->session->setFlash('error', 'К сожалению, такой адрес не существует');
             }
         }
 
@@ -148,7 +150,7 @@ class SiteController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password was saved.');
+            Yii::$app->session->setFlash('success', 'Новый пароль успешно сохранен');
 
             return $this->goHome();
         }
