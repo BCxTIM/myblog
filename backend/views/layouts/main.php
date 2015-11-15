@@ -42,11 +42,14 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
 
     } else {
+        $menuItems[] = ['label' => 'Posts', 'url' => ['/posts']];
+        $menuItems[] = ['label' => 'Add post', 'url' => ['/posts/create']];
         $menuItems[] = [
             'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
             'url' => ['/site/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];
+
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
