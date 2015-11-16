@@ -7,22 +7,22 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Восстановление пароля';
+$this->title = Yii::t('app', 'REQUEST_PASSWORD_RESET_TOKEN');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-request-password-reset">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Пожалуйста, введите Ваш е-маил</p>
+    <p><?=Yii::t('app', 'REQUETS_TOKEN_TEXT') ?></p>
 
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
 
-                <?= $form->field($model, 'email')->label('Ваш E-mail') ?>
+                <?= $form->field($model, 'email') ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton(Yii::t('app', 'REQUEST_SUBMIT'), ['class' => 'btn btn-primary']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

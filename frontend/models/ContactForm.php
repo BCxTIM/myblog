@@ -22,12 +22,12 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
+            // name, emailYii::t('app', 'USER_USERNAME_REQUIRED'), subject and body are required
+            [['name', 'email', 'subject', 'body'], 'required', 'message' => Yii::t('app', 'CONTACT_ALL_REQUIRED')],
             // email has to be a valid email address
-            ['email', 'email'],
+            ['email', 'email', 'message' => Yii::t('app', 'CONTACT_EMAIL_CORRECT')],
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            //['verifyCode', 'captcha'],
         ];
     }
 
@@ -37,7 +37,11 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            //'verifyCode' => 'Verification Code',
+            'name' => Yii::t('app', 'CONTACT_USERNAME'),
+            'email' => Yii::t('app', 'CONTACT_EMAIL'),
+            'subject' => Yii::t('app', 'CONTACT_SUBJECT'),
+            'body' => Yii::t('app', 'CONTACT_TEXT'),
         ];
     }
 
