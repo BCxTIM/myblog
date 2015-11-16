@@ -5,7 +5,7 @@ use backend\models\Posts;
 use yii\helpers\Url;
 /* @var $this yii\web\View */
 
-$this->title = 'Заметки начинающего автоматизатора';
+$this->title = Yii::$app->name;
 ?>
 <div class="site-index">
 
