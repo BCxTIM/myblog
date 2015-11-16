@@ -12,6 +12,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use \yii\base\HttpException;
 
 use backend\models\Posts;
 use backend\models\PostsSearch;
@@ -75,7 +76,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $post = new Posts;
+    $data = $post->find()->all();
+    return $this->render('index', array(
+        'data' => $data
+    ));
     
+    /*
     $searchModel = new PostsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -84,15 +91,32 @@ class SiteController extends Controller
             'dataProvider' => $dataProvider,
         ]);
         //return $this->render('index');
+        */
     }
 
+public function actionView($id=NULL)
+    {
+        if ($id === NULL)
+            throw new HttpException(404, 'Not Found');
+ 
+        $post = Posts::find()->where(['id' => $id])->one();
+ 
+        if ($post === NULL)
+            throw new HttpException(404, 'Document Does Not Exist');
+ 
+        echo $this->render('view', array(
+            'post'=> $post
+        ));
+    }
+
+/*
       public function actionView($id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
-
+*/
     protected function findModel($id)
     {
         if (($model = Posts::findOne($id)) !== null) {

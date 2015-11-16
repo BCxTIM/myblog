@@ -17,7 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'CONTACT_TEXT_ALL' => 'Пожалуйста, если у Вас есть чем поделиться, свяжитесь со мной',
+    'POST_DATE' => 'Дата публикации',
+    'POST_DESCTIPTION' => 'Полный текст',
+    'POST_ID' => '№',
+    'POST_SMALL_DESCTIPTION' => 'Краткое описание',
+    'POST_TITLE' => 'Название',
     'CONTACT_ALL_REQUIRED' => 'Пожалуйста, заполните все поля',
     'CONTACT_BUTTON_SEND' => 'Отправить',
     'CONTACT_EMAIL' => 'Е-маил',
@@ -26,6 +30,7 @@ return [
     'CONTACT_SUBJECT' => 'Тема',
     'CONTACT_SUCCESS_SEND' => 'Спасибо за Ваше сообщение',
     'CONTACT_TEXT' => 'Сообщение',
+    'CONTACT_TEXT_ALL' => 'Пожалуйста, если у Вас есть чем поделиться, свяжитесь со мной',
     'CONTACT_USERNAME' => 'Имя',
     'EMAIL_NOT_CORRECT' => 'Введите пожалуйста, правильный е-маил',
     'EMAIL_NOT_IN_BASE' => 'Данный адрес не существует в базе',

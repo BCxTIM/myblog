@@ -16,33 +16,20 @@ $this->title = Yii::$app->name;
     <div class="body-content">
 
         <div class="row">
-            <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
-        'columns' => [
-        //['class' => 'yii\grid\SerialColumn', 'header'=>'№'],
+        <hr />
+        <table class="table table-striped table-hover">
 
-        /** 
-         * ссылка на заголовок
-        **/
-            [
-        'attribute' => 'title',
-        'value' => function (Posts $data) {
-            return Html::a(Html::encode($data->title), Url::to(['view', 'id' => $data->id]));
-        },
-        'format' => 'raw',
-    ],
-            'small_description:ntext',
-            'Description:ntext',
-            'date',
-             
-
-           // ['class' => 'yii\grid\ActionColumn', 'header' => 'Действие'],
- 
-
-        ],
-    ]); ?>
-        </div>
+            <?php foreach ($data as $post): ?>
+            <tr>
+                <td><?php echo Html::a($post->title, array('site/view', 'id'=>$post->id)) ?></td>
+                <td><?php echo $post->small_description; ?></td>
+                <td><?php echo $post->date; ?></td>
+            
+            
+             </tr>
+            <?php endforeach; ?>
+        </table>
+        </div>  
 
     </div>
 </div>
