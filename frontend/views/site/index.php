@@ -7,28 +7,40 @@ use yii\helpers\Url;
 
 $this->title = Yii::$app->name;
 ?>
+
+
 <div class="site-index">
 
     <div class="jumbotron">
          <h1> Мой блог </h1>
     </div>
+    
 
     <div class="body-content">
 
         <div class="row">
-        <hr />
-        <table class="table table-striped table-hover">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
 
             <?php foreach ($data as $post): ?>
-            <tr>
-                <td><?php echo Html::a($post->title, array('site/view', 'id'=>$post->id)) ?></td>
-                <td><?php echo $post->small_description; ?></td>
-                <td><?php echo $post->date; ?></td>
+           
+                <?php echo Html::a($post->title, array('site/view', 'id'=>$post->id)) ?> </br></br>
+                <?php echo $post->small_description; ?> </br></br>
+                <?php echo $post->date; ?> </br></br></br></br>   
             
             
-             </tr>
+             
             <?php endforeach; ?>
         </table>
+                    </div>
+                    <div class="col-md-4">
+                        
+                    </div>
+                </div>
+            </div>
+        <hr />
+        
         </div>  
 
     </div>
