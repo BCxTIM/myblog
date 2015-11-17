@@ -15,13 +15,19 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="posts-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    
    
-   <!--<?php echo $post->id; ?> </br> -->
-   <p><?php echo $post->title; ?> </br> </p> 
-   <!--<p><?php echo $post->small_description; ?> </br> </p> -->
-   <p><?php echo $post->Description; ?> </br> </p>
-   <p><?php echo $post->date; ?></br> </p>
+   <div class="container">
+   	<div class="row">
+   		<div class="col-md-8">
+   			<p><?php echo $post->title; ?> </br> </br> 
+		    <p><?php echo $post->Description; ?> </br> </br>
+	   	    <p><?php echo $post->date; ?></br> </br>
+   		</div>
+   		<div class="col-md-4"></div>
+   	</div>
+   </div>
+   
         
 
 </div>
