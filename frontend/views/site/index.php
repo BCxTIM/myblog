@@ -3,9 +3,12 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use backend\models\Posts;
 use yii\helpers\Url;
+use yii\assets\assets;
+
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->name;
+
 ?>
 
 
@@ -22,17 +25,31 @@ $this->title = Yii::$app->name;
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
+                        <div class="container">
+                           
+                            <div class="row masonry" data-columns>
+                                 <?php foreach ($data as $post): ?>
+                                <div class="item"> 
+                                     <div class="thumbnail">
+                                        <img src="http://placehold.it/400x240" alt="">
+                                        <div class="caption">
+                                            <h3> <?php echo Html::a($post->title, array('site/view', 'id'=>$post->id)) ?></h3>
+                                            <p><?php echo $post->small_description; ?> </p>
+                                            <p><?php echo $post->date; ?> </p>
+                                             <?= Html::a('Подробнее <i class="glyphicon glyphicon-arrow-right"></i>', array('site/view', 'id'=>$post->id), ['class'=>'btn btn-success']) ?>
+                                             
+                                        </div>
+                                    </div>
+                                </div>
 
-            <?php foreach ($data as $post): ?>
-           
-                <?php echo Html::a($post->title, array('site/view', 'id'=>$post->id)) ?> </br></br>
-                <?php echo $post->small_description; ?> </br></br>
-                <?php echo $post->date; ?> </br></br></br></br>   
+     
             
             
              
             <?php endforeach; ?>
-        </table>
+                            </div>
+                        </div>
+        
                     </div>
                     <div class="col-md-4">
                         
