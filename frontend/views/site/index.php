@@ -14,55 +14,62 @@ $this->title = Yii::$app->name;
 
 
 <div class="site-index">
+    <div class="container">
 
-    <div class="jumbotron">
-         <h1> Мой блог </h1>
+   <div class="blog-header">
+        <h1 class="blog-title"><?= Yii::$app->name; ?></h1>
+        <p class="lead blog-description">Практика автоматизации</p>
     </div>
-    
 
-    <div class="body-content">
+    <div class="row">
 
-        <div class="row">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="container">
-                           
-                            <div class="row masonry" data-columns>
-                                 <?php foreach ($data as $post): ?>
-                                <div class="item"> 
-                                     <div class="thumbnail">
-                                        
-                                     
-                                        
-                                        <?= Html::a(Html::img($post->img_post, ['alt' => $post->title]), array('site/view', 'id'=>$post->id)) ?>
-                                        <div class="caption">
-                                            <h3> <?php echo Html::a($post->title, array('site/view', 'id'=>$post->id)) ?></h3>
-                                            <p><?php echo $post->small_description; ?> </p>
-                                            <p><?php echo $post->date; ?> </p>
-                                             <?= Html::a('Подробнее <i class="glyphicon glyphicon-arrow-right"></i>', array('site/view', 'id'=>$post->id), ['class'=>'btn btn-success']) ?>
-                                             
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="col-sm-8 blog-main">
 
-     
+            <div class="blog-post">
+            <?php foreach ($data as $post): ?>
+                <h2> <?php echo Html::a($post->title, array('site/view', 'id'=>$post->id)) ?></h2>
+                <p class="blog-post-meta"> Опубликовано <?php echo $post->date; ?></p>
+                <?= Html::a(Html::img($post->img_post, ['alt' => $post->title]), array('site/view', 'id'=>$post->id)) ?>
+                <br><br>
+                <p><?php echo $post->small_description; ?></p>
+                <?= Html::a('Подробнее <i class="glyphicon glyphicon-arrow-right"></i>', array('site/view', 'id'=>$post->id), ['class'=>'btn btn-info']) ?>
+                <?php endforeach; ?>
+            </div><!-- /.blog-post -->
             
-            
-             
-            <?php endforeach; ?>
-                            </div>
-                        </div>
+
+            <ul class="pager">
+                <li><a href="#">Previous</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
         
-                    </div>
-                    <div class="col-md-4">
-                        
-                    </div>
-                </div>
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4><?= Yii::t('app', 'NAV_ABOUT'); ?></h4>
+                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
             </div>
-        <hr />
-        
-        </div>  
+
+            <div class="sidebar-module">
+                <h4><?= Yii::t('app', 'NAV_CONTACT') ?></h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ol>
+            </div>
+        </div><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
 
     </div>
+
+
+
+
+
+<hr />
+</div>  
+
+</div>
 </div>

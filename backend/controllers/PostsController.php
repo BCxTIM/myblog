@@ -89,7 +89,7 @@ class PostsController extends Controller
 
 
 
-            $model->date = date('Y-m-d H:m:s');
+            $model->date = date('d-m-Y');
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -113,7 +113,7 @@ class PostsController extends Controller
 
             $model = $this->uploadImage($model);
 
-            $model->date = date('Y:m:d H:m:s');
+            $model->date = date('Y-m-d H:i:s');
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
