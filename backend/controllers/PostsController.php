@@ -33,6 +33,8 @@ class PostsController extends Controller
      */
     public function actionIndex()
     {
+
+
         $searchModel = new PostsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -89,7 +91,7 @@ class PostsController extends Controller
 
 
 
-            $model->date = date('d-m-Y');
+            $model->date = date('Y-m-d H:i:s ');
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -113,7 +115,7 @@ class PostsController extends Controller
 
             $model = $this->uploadImage($model);
 
-            $model->date = date('Y-m-d H:i:s');
+            $model->date = date('Y-m-d H:i:s ');
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

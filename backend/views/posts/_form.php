@@ -14,9 +14,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'file')->fileInput(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => 50]) ?>
 
-    <?= $form->field($model, 'small_description')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'small_description')->textarea(['maxlength' => 300]) ?>
 
     <?= $form->field($model, 'Description')->textarea(['rows' => 6]) ?>
 

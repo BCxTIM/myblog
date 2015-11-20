@@ -28,7 +28,7 @@ $this->title = Yii::$app->name;
             <div class="blog-post">
             <?php foreach ($data as $post): ?>
                 <h2> <?php echo Html::a($post->title, array('site/view', 'id'=>$post->id)) ?></h2>
-                <p class="blog-post-meta"> Опубликовано <?php echo $post->date; ?></p>
+                <p class="blog-post-meta"> <i class="glyphicon glyphicon-time"></i> Posted on <?php echo date('d F Y H:i:s', strtotime($post->date)) ?></p>
                 <?= Html::a(Html::img($post->img_post, ['alt' => $post->title]), array('site/view', 'id'=>$post->id)) ?>
                 <br><br>
                 <p><?php echo $post->small_description; ?></p>
