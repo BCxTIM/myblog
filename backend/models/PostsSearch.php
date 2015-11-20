@@ -19,7 +19,7 @@ class PostsSearch extends Posts
     {
         return [
             [['id'], 'integer'],
-            [['title', 'small_description', 'Description', 'date'], 'safe'],
+            [['img_post', 'title', 'small_description', 'Description', 'date'], 'safe'],
         ];
     }
 
@@ -60,7 +60,8 @@ class PostsSearch extends Posts
             'date' => $this->date,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
+        $query->andFilterWhere(['like', 'img_post', $this->img_post])
+            ->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'small_description', $this->small_description])
             ->andFilterWhere(['like', 'Description', $this->Description]);
 

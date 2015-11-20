@@ -5,6 +5,7 @@ use backend\models\Posts;
 use yii\helpers\Url;
 use yii\assets\assets;
 
+
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->name;
@@ -31,7 +32,10 @@ $this->title = Yii::$app->name;
                                  <?php foreach ($data as $post): ?>
                                 <div class="item"> 
                                      <div class="thumbnail">
-                                        <img src="http://placehold.it/400x240" alt="">
+                                        
+                                     
+                                        
+                                        <?= Html::a(Html::img($post->img_post, ['alt' => $post->title]), array('site/view', 'id'=>$post->id)) ?>
                                         <div class="caption">
                                             <h3> <?php echo Html::a($post->title, array('site/view', 'id'=>$post->id)) ?></h3>
                                             <p><?php echo $post->small_description; ?> </p>

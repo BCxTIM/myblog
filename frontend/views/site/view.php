@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
    <div class="container">
    	<div class="row">
    		<div class="col-md-8">
+         <?= Html::img($post->img_post, ['alt' => $post->title]) ?>
    			<p><?php echo $post->title; ?> </br> </br> 
 		    <p><?php echo $post->Description; ?> </br> </br>
 	   	    <p><?php echo $post->date; ?></br> </br>

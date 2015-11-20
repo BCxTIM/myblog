@@ -8,6 +8,7 @@ use backend\models\PostsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * PostsController implements the CRUD actions for Posts model.
@@ -53,6 +54,25 @@ class PostsController extends Controller
         ]);
     }
 
+   private function uploadImage($model)
+    {
+
+           $file = UploadedFile::getInstance($model, 'file');
+           if(!empty($file)){
+                       $imageName = $model->title;
+                       $model->file = $file;
+                       $model->file->saveAs('../../frontend/web/uploads/'.$imageName.'.'.$model->file->extension);
+
+                       //save path in db column
+                       $model->img_post = ('uploads/'.$imageName.'.'.$model->file->extension);
+           }
+           return $model;
+}
+
+
+    
+    
+
     /**
      * Creates a new Posts model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -63,7 +83,13 @@ class PostsController extends Controller
         $model = new Posts();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->date = date('Y-m-d H:i:s');
+                //upload file
+            
+             $model = $this->uploadImage($model);
+
+
+
+            $model->date = date('Y-m-d H:m:s');
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -83,7 +109,12 @@ class PostsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model = $this->uploadImage($model);
+
+            $model->date = date('Y:m:d H:m:s');
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -100,7 +131,12 @@ class PostsController extends Controller
      */
     public function actionDelete($id)
     {
+
+      
+
+
         $this->findModel($id)->delete();
+
 
         return $this->redirect(['index']);
     }
